@@ -1,0 +1,102 @@
+/* Estilos generales */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('Madre.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Contenedor de cartas */
+.cartas {
+    display: flex;
+    gap: 20px;
+}
+
+/* Estilos de las cartas */
+.carta {
+    position: relative;
+    width: 250px;
+    height: 180px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.frente, .interior {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    transition: transform 0.8s;
+    backface-visibility: hidden;
+    border-radius: 10px;
+}
+
+.frente {
+    background: linear-gradient(135deg, #FFD1E3, #FF85A2);
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3);
+    transform: rotateY(0deg);
+}
+
+.interior {
+    background: linear-gradient(135deg, #FF85A2, #FFD1E3);
+    color: white;
+    font-size: 1.1em;
+    transform: rotateY(180deg);
+}
+
+.carta.abierta .frente {
+    transform: rotateY(-180deg);
+}
+
+.carta.abierta .interior {
+    transform: rotateY(0deg);
+}
+
+/* Estilos y animaciones de los elementos decorativos */
+.corazon, .flor, .mariposa, .estrella {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    animation: moverElemento 8s infinite linear;
+}
+
+/* Colores y efectos */
+.corazon {
+    background: radial-gradient(circle, #FF5F7E 30%, #D4145A 100%);
+    clip-path: polygon(50% 15%, 100% 40%, 80% 90%, 50% 75%, 20% 90%, 0% 40%);
+    box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.5);
+}
+
+.flor {
+    background: radial-gradient(circle, #FFC3A0 30%, #FF6F61 100%);
+    clip-path: circle(50%);
+}
+
+.mariposa {
+    background: radial-gradient(circle, #9B5DE5 30%, #F15BB5 100%);
+    clip-path: ellipse(50% 40%);
+}
+
+.estrella {
+    background: radial-gradient(circle, #FFD700 30%, #FFA500 100%);
+    clip-path: polygon(50% 5%, 61% 35%, 95% 35%, 67% 58%, 77% 91%, 50% 70%, 23% 91%, 33% 58%, 5% 35%, 39% 35%);
+}
+
+/* Animación de movimiento circular */
+@keyframes moverElemento {
+    0% { transform: translateY(0) translateX(0) rotate(0deg); }
+    25% { transform: translateY(60px) translateX(60px) rotate(20deg); }
+    50% { transform: translateY(120px) translateX(0px) rotate(40deg); }
+    75% { transform: translateY(60px) translateX(-60px) rotate(20deg); }
+    100% { transform: translateY(0) translateX(0) rotate(0deg); }
+}
